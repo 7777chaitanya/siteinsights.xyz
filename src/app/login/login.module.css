@@ -1,0 +1,21 @@
+.loginInputFieldsContainer {
+  display: flex;
+  padding: 30px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 30vw;
+  margin: auto;
+}
+
+#hello{
+    display: flex
+}
+
+.inputField{
+    margin: 10px;
+}
+
+.loginPageContainer{
+    width: 100vw;
+    height: 100vh;
+}
