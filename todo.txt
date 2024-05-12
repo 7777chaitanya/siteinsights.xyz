@@ -1,1 +1,12 @@
-I will finish this product. I will not give up in between.
+* I will finish this product. I will not give up in between.
+
+* I should finish building this product faster and move towards acquiring customers. 
+
+* I should finish building this in 2 weeks and move on to acquiring customers
+
+* I should learn the art of building saas apps from building this product
+
+
+* this user land request should be sent for every path change on the client
+
+* the stats page should fetch the required data from the table to show the stats to the user.
