@@ -7,6 +7,5 @@
 * I should learn the art of building saas apps from building this product
 
 
-* this user land request should be sent for every path change on the client
 
 * the stats page should fetch the required data from the table to show the stats to the user.

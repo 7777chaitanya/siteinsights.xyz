@@ -47,7 +47,6 @@ export async function POST(request: Request) {
     postalCode: countryAndCityResponse.postal.code,
     isp: asnResponse.autonomousSystemOrganization,
     domainName: host,
-    // path is wrong now, it should be the url path in client. convert this request to POST and get the request info in payload
     urlPath: requestBody.pathname,
     browser: request.headers.get("user-agent"),
     os: request.headers.get("sec-ch-ua-platform"),
