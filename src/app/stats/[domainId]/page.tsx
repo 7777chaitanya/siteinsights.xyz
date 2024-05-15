@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import DataChart from "@/components/DataChart";
 import CodeSnippet from "@/components/CodeSnippet";
 import SiteVisitorStats from "@/components/SiteVisitorStats";
+import { useAuth } from "@/utils/customHooks/useAuth";
+import supabase from "@/utils/supabase/supabase";
 
 
 
@@ -11,6 +13,10 @@ import SiteVisitorStats from "@/components/SiteVisitorStats";
 
 const DomainAnalytics = ({ params }) => {
   const [siteAnalyticsData, setSiteAnalyticsData] = useState({})
+
+  const user = useAuth();
+ 
+  const [allDomainsOfTheUser, setAllDomainsOfTheUser] = useState(null);
 
   const {totalVisitors, uniqueVisitors, visitorsByDay} = siteAnalyticsData
   useEffect(() => {
@@ -27,7 +33,24 @@ const DomainAnalytics = ({ params }) => {
       body: JSON.stringify({ domainId: params.domainId }),
     }).then(res => res.json()).then(data => setSiteAnalyticsData(data));
   }, []);
-  console.log("siteAnalyticsData", siteAnalyticsData)
+  console.log("siteAnalyticsData", siteAnalyticsData, allDomainsOfTheUser)
+
+  useEffect(() => {
+    if (user) {
+      supabase
+        .from("domainNames")
+        .select("*")
+
+        // Filters
+        .eq("user", user.id)
+        .then((res) => {
+          console.log(res);
+          let { data, error } = res;
+          setAllDomainsOfTheUser(data);
+          console.log("user domains data", data);
+        });
+    }
+  }, [user]);
   return (
     <div>
       {/* // TODO: domain name will be shown in a select field, the user should be able to switch to a different domain stats from this page */}
