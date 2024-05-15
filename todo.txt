@@ -9,3 +9,6 @@
 
 
 * the stats page should fetch the required data from the table to show the stats to the user.
+
+* As discussed earlier, the first version will have only visitor count. So, I need to finish the line chart
+   - I willl give the full data in the first iteration. then I will take in params for filters and return the filtered data to the client
