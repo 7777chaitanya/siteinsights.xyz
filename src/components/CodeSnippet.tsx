@@ -4,7 +4,7 @@ import {useState} from 'react'
 
 const CodeSnippet = () => {
     const [snippet, setSnippet] = useState(
-      '<script defer src="localhost:3000/js/script.js"></script>'
+      '<script defer src="https://siteinsights-xyz.vercel.app/js/script.js"></script>'
     );
     return (
       <div style={{display: 'flex', width: '80vw', margin: 'auto', border: '1px solid lightBlue', backgroundColor: 'lightBlue', padding: '3px', alignItems: 'center', justifyContent: 'spaceBetween', borderRadius: '5px'}}>
