@@ -5,20 +5,18 @@ import CodeSnippet from "@/components/CodeSnippet";
 import SiteVisitorStats from "@/components/SiteVisitorStats";
 import { useAuth } from "@/utils/customHooks/useAuth";
 import supabase from "@/utils/supabase/supabase";
-
-
-
-
-
+import { Button } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 const DomainAnalytics = ({ params }) => {
-  const [siteAnalyticsData, setSiteAnalyticsData] = useState({})
+  const [siteAnalyticsData, setSiteAnalyticsData] = useState({});
 
   const user = useAuth();
- 
-  const [allDomainsOfTheUser, setAllDomainsOfTheUser] = useState(null);
 
-  const {totalVisitors, uniqueVisitors, visitorsByDay} = siteAnalyticsData
+  const [allDomainsOfTheUser, setAllDomainsOfTheUser] = useState(null);
+  const router = useRouter();
+
+  const { totalVisitors, uniqueVisitors, visitorsByDay } = siteAnalyticsData;
   useEffect(() => {
     fetch("/api/siteStats", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -31,9 +29,11 @@ const DomainAnalytics = ({ params }) => {
       },
       referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
       body: JSON.stringify({ domainId: params.domainId }),
-    }).then(res => res.json()).then(data => setSiteAnalyticsData(data));
+    })
+      .then((res) => res.json())
+      .then((data) => setSiteAnalyticsData(data));
   }, []);
-  console.log("siteAnalyticsData", siteAnalyticsData, allDomainsOfTheUser)
+  console.log("siteAnalyticsData", siteAnalyticsData, allDomainsOfTheUser);
 
   useEffect(() => {
     if (user) {
@@ -54,11 +54,21 @@ const DomainAnalytics = ({ params }) => {
   return (
     <div>
       {/* // TODO: domain name will be shown in a select field, the user should be able to switch to a different domain stats from this page */}
+      <Button
+        variant="contained"
+        onClick={() => {
+          router.push("/dashboard");
+        }}
+      >
+        Go back to dashboard
+      </Button>
       <h3>{params.domainId}</h3>
       <CodeSnippet />
-      <SiteVisitorStats totalVisitors={totalVisitors} uniqueVisitors={uniqueVisitors}/>
-      <DataChart data={visitorsByDay}/>
-
+      <SiteVisitorStats
+        totalVisitors={totalVisitors}
+        uniqueVisitors={uniqueVisitors}
+      />
+      <DataChart data={visitorsByDay} />
     </div>
   );
 };
