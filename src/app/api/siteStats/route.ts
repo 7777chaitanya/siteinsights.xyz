@@ -49,7 +49,7 @@ export async function POST(request: Request) {
   // compose the stats for the domain id here
 
   return Response.json({
-    totalVisitors: requestLog.length,
+    totalVisitors: requestLog?.length,
     uniqueVisitors: uniqueVisitorsSet.size,
     visitorsByDay: formattedVistorsByDay,
   });
