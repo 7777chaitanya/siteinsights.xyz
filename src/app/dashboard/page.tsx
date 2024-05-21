@@ -9,10 +9,10 @@ import supabase from "@/utils/supabase/supabase";
 type Props = {};
 
 const page = (props: Props) => {
-  const user = useAuth();
+  const user: any = useAuth();
   const router = useRouter();
-  const [domainName, setDomainName] = useState(null);
-  const [allDomainsOfTheUser, setAllDomainsOfTheUser] = useState(null);
+  const [domainName, setDomainName] = useState<string | null>(null);
+  const [allDomainsOfTheUser, setAllDomainsOfTheUser] = useState<any[] | null>(null);
   console.log("user", user);
 
   const handleSignout = () => {

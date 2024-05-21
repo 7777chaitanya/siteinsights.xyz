@@ -8,15 +8,15 @@ import supabase from "@/utils/supabase/supabase";
 import { Button } from "@mui/material";
 import { useRouter } from "next/navigation";
 
-const DomainAnalytics = ({ params }) => {
+const DomainAnalytics = ({ params }: any) => {
   const [siteAnalyticsData, setSiteAnalyticsData] = useState({});
 
-  const user = useAuth();
+  const user: any = useAuth();
 
-  const [allDomainsOfTheUser, setAllDomainsOfTheUser] = useState(null);
+  const [allDomainsOfTheUser, setAllDomainsOfTheUser] = useState<any | null>(null);
   const router = useRouter();
 
-  const { totalVisitors, uniqueVisitors, visitorsByDay } = siteAnalyticsData;
+  const { totalVisitors, uniqueVisitors, visitorsByDay }: any = siteAnalyticsData;
   useEffect(() => {
     fetch("/api/siteStats", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.

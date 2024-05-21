@@ -1,4 +1,4 @@
-export function copyToClipboard(text) {
+export function copyToClipboard(text: string) {
     // Create a temporary input element
     const tempInput = document.createElement("input");
     tempInput.value = text;

@@ -15,10 +15,7 @@ export async function signUpNewUser(email: string, password: string) {
 export async function signInWithEmail(email: string, password: string) {
   const { data, error } = await supabase.auth.signInWithPassword({
     email: email,
-    password: password,
-    options: {
-      emailRedirectTo: "http://localhost:3000/",
-    },
+    password: password
   });
 }
 

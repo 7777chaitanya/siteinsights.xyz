@@ -4,12 +4,12 @@ import './SiteVisitorStats.css'
 type Props = {}
 
 
-const fields = {
+const fields : any = {
     totalVisitors: 'Total Visitors',
     uniqueVisitors: 'UniqueVisitors'
 }
 
-const SiteVisitorStats = (props) => {
+const SiteVisitorStats = (props: any) => {
   return (
     <div className='allStatsContainer'>{
         Object.keys(fields).map(eachField => {

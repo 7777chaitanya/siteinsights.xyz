@@ -22,7 +22,7 @@ import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
 // ];
 
 
-const DataChart = ({data}) => {
+const DataChart = ({data} : any) => {
   return (
     <div style={{width: '80vw', margin:'20px auto'}}>
 
